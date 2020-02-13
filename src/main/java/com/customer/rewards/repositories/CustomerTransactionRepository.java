@@ -5,6 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @Transactional
 public interface CustomerTransactionRepository extends CrudRepository<CustomerTransaction, Long> {
 
-    List<CustomerTransaction> findByCustomerIdAndTransactionDateBetween(Long customerId, Date fromDate, Date toDate);
+    List<CustomerTransaction> findByCustomerIdAndTransactionDateBetween(Long customerId, LocalDate fromDate, LocalDate toDate);
 
     List<CustomerTransaction> findByCustomerId(Long customerId);
 

@@ -1,11 +1,10 @@
-package com.customer.rewards.domain;
+package com.customer.rewards.model.entity;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "customer_transaction")

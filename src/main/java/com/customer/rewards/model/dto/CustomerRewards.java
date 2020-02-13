@@ -1,4 +1,4 @@
-package com.customer.rewards.model;
+package com.customer.rewards.model.dto;
 
 public class CustomerRewards {
 

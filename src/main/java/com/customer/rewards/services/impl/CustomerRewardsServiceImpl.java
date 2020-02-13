@@ -1,7 +1,7 @@
 package com.customer.rewards.services.impl;
 
-import com.customer.rewards.domain.CustomerTransaction;
-import com.customer.rewards.model.CustomerRewards;
+import com.customer.rewards.model.entity.CustomerTransaction;
+import com.customer.rewards.model.dto.CustomerRewards;
 import com.customer.rewards.repositories.CustomerTransactionRepository;
 import com.customer.rewards.services.CustomerRewardsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +16,10 @@ import static com.customer.rewards.util.DateUtil.getDatePriorToDays;
 @Service
 public class CustomerRewardsServiceImpl implements CustomerRewardsService {
 
-    public static final int TWO_POINTS = 2;
-    public static final int THIRTY_DAY_OFFSET = 30;
-    public static final int SIXTY_DAY_OFFSET = 60;
-    public static final int NINTEY_DAY_OFFSET = 90;
+    private static final int TWO_POINTS = 2;
+    private static final int THIRTY_DAY_OFFSET = 30;
+    private static final int SIXTY_DAY_OFFSET = 60;
+    private static final int NINETY_DAY_OFFSET = 90;
 
     @Value("${rewards.single.point.amount}")
     private Integer singlePointAmount;
@@ -27,7 +27,7 @@ public class CustomerRewardsServiceImpl implements CustomerRewardsService {
     @Value("${rewards.double.point.amount}")
     private Integer doublePointAmount;
 
-    private CustomerTransactionRepository customerTransactionRepository;
+    private final CustomerTransactionRepository customerTransactionRepository;
 
     @Autowired
     public CustomerRewardsServiceImpl(CustomerTransactionRepository customerTransactionRepository) {
@@ -40,7 +40,7 @@ public class CustomerRewardsServiceImpl implements CustomerRewardsService {
         LocalDate currentDate = LocalDate.now();
         LocalDate thirtyDaysOffsetDate = getDatePriorToDays(THIRTY_DAY_OFFSET);
         LocalDate sixtyDaysOffsetDate = getDatePriorToDays(SIXTY_DAY_OFFSET);
-        LocalDate ninetyDaysOffsetDate = getDatePriorToDays(NINTEY_DAY_OFFSET);
+        LocalDate ninetyDaysOffsetDate = getDatePriorToDays(NINETY_DAY_OFFSET);
 
         List<CustomerTransaction> thirtyDayTransactions = customerTransactionRepository
                 .findByCustomerIdAndTransactionDateBetween(customerId, thirtyDaysOffsetDate, currentDate);

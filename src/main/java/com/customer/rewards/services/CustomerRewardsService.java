@@ -1,7 +1,7 @@
 package com.customer.rewards.services;
 
-import com.customer.rewards.domain.CustomerTransaction;
-import com.customer.rewards.model.CustomerRewards;
+import com.customer.rewards.model.entity.CustomerTransaction;
+import com.customer.rewards.model.dto.CustomerRewards;
 
 import java.util.List;
 

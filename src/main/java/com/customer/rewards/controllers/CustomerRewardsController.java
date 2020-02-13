@@ -1,7 +1,7 @@
 package com.customer.rewards.controllers;
 
-import com.customer.rewards.domain.CustomerTransaction;
-import com.customer.rewards.model.CustomerRewards;
+import com.customer.rewards.model.entity.CustomerTransaction;
+import com.customer.rewards.model.dto.CustomerRewards;
 import com.customer.rewards.services.CustomerRewardsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/customer")
 public class CustomerRewardsController {
 
-    private CustomerRewardsService customerRewardsService;
+    private final CustomerRewardsService customerRewardsService;
 
     @Autowired
     public CustomerRewardsController(CustomerRewardsService customerRewardsService) {
@@ -28,14 +28,14 @@ public class CustomerRewardsController {
     @GetMapping(value = "/{customerId}/rewards")
     public ResponseEntity<CustomerRewards> getCustomerRewards(@PathVariable("customerId") Long customerId) {
 
-        return new ResponseEntity<CustomerRewards>(
+        return new ResponseEntity<>(
                 customerRewardsService.getCustomerRewards(customerId),
                 HttpStatus.OK);
     }
 
     @GetMapping(value = "/{customerId}/transactions")
     public ResponseEntity<List<CustomerTransaction>> getAllTransactionsByCustomerId(@PathVariable("customerId") Long customerId) {
-        return new ResponseEntity<List<CustomerTransaction>>(
+        return new ResponseEntity<>(
                 customerRewardsService.getAllTransactionsByCustomerId(customerId),
                 HttpStatus.OK);
     }

@@ -1,4 +1,4 @@
-package com.customer.rewards.error;
+package com.customer.rewards.model.exception;
 
 import java.util.Date;
 

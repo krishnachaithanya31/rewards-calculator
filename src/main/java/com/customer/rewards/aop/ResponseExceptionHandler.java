@@ -1,6 +1,6 @@
 package com.customer.rewards.aop;
 
-import com.customer.rewards.error.ErrorDetails;
+import com.customer.rewards.model.exception.ErrorDetails;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +12,7 @@ import java.util.Date;
 
 
 @RestControllerAdvice
-public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
+class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ErrorDetails> handleAllExceptions(Exception ex) {
